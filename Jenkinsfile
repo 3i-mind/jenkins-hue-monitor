@@ -18,6 +18,10 @@ node('docker') {
         pushDkrToArtifactory()
     }
 
+    stage('CleanUp'){
+        sh "docker system prune -f"
+    }
+
 }
 }
 }
