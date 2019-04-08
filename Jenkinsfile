@@ -6,15 +6,13 @@ node('docker') {
     //load from shared librarys
     settingVars()
     //pipeline
-    
-
+    // env.SERVICE_NAME and env.SERVICE_VERISON set above, taken from repo name and version fro ruby.json file
+       
     stage('Build Docker Image ') {
-        sh "docker build --rm -f Dockerfile -t jenkins-hue-monitor:latest ."
+        sh "docker build --rm -f Dockerfile -t jenkins-hue-monitor:${env.SERVICE_VERSION} ."
     }
 
     stage('Push To Registry') {
-//        env.SERVICE_NAME="taken from git repo name"
-        env.SERVICE_VERSION="1.0.0"
         pushDkrToArtifactory()
     }
 
