@@ -9,7 +9,7 @@ node('docker') {
     
 
     stage('Build Docker Image ') {
-        sh "docker build --rm -f "Dockerfile" -t jenkins-hue-monitor:latest ."
+        sh "docker build --rm -f Dockerfile -t jenkins-hue-monitor:latest ."
     }
 
     stage('Push To Registry') {
